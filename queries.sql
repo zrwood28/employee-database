@@ -26,5 +26,24 @@ from employees
 where first_name = 'Hercules'
 	and last_name like 'B%';
 	
+select e.emp_no, e.last_name, e.first_name, d.dept_name
+from employees as e
+join dept_emp as de
+on e.emp_no = de.emp_no
+	join departments as d
+	on de.dept_no = d.dept_no
+where dept_name = 'Sales';
 
-	
+select e.emp_no, e.last_name, e.first_name, d.dept_name
+from employees as e
+join dept_emp as de
+on e.emp_no = de.emp_no
+	join departments as d
+	on de.dept_no = d.dept_no
+where dept_name = 'Sales'
+or dept_name = 'Development';
+
+select last_name, count(last_name) as "Last Name Frequency"
+from employees
+group by last_name
+order by "Last Name Frequency" desc;
